@@ -1,0 +1,56 @@
+def add(x, y):
+    return x + y
+
+def subtract(x, y):
+    return x - y
+
+def multiply(x, y):
+    return x * y
+
+def divide(x, y):
+    if y == 0:
+        raise ValueError("На ноль делить нельзя!")
+    return x / y
+
+while True:
+    try:
+        print("Выберите операцию:")
+        print("1. Сложение")
+        print("2. Вычитание")
+        print("3. Умножение")
+        print("4. Деление")
+        print("5. Выход")
+        
+        choice = int(input("Введите номер операции: "))
+        
+        if choice == 5:
+            print("Выход из программы.")
+            break
+        
+        if choice < 1 or choice > 4:
+            print("Некорректный ввод. Пожалуйста, выберите номер операции от 1 до 4.")
+            continue
+        
+        num1 = float(input("Введите первое число: "))
+        num2 = float(input("Введите второе число: "))
+        
+        if choice == 1:
+            result = add(num1, num2)
+            print(f"Результат: {result}")
+        elif choice == 2:
+            result = subtract(num1, num2)
+            print(f"Результат: {result}")
+        elif choice == 3:
+            result = multiply(num1, num2)
+            print(f"Результат: {result}")
+        elif choice == 4:
+            try:
+                result = divide(num1, num2)
+                print(f"Результат: {result}")
+            except ValueError as e:
+                print(e)
+        
+    except ValueError:
+        print("Некорректный ввод. Пожалуйста, введите числа.")
+    except Exception as e:
+        print(f"Произошла ошибка: {e}")
